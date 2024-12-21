@@ -19,8 +19,8 @@ concurrency:
 
 env:
   PYTHON_IMAGE: python:3.9-slim-buster
-  LOCAL_IMAGE_DJANGO_PROD: localhost:5000/lms-backend-django:latest
-  LOCAL_IMAGE_DJANGO_DEV: localhost:5000/lms-backend-django-dev:latest
+  LOCAL_IMAGE_DJANGO_PROD: localhost:5000/lms-backend:latest
+  LOCAL_IMAGE_DJANGO_DEV: localhost:5000/lms-backend-dev:latest
 
 jobs:
   build:
@@ -113,8 +113,8 @@ jobs:
         run: |
           curl -s http://localhost:5000/v2/_catalog
           docker exec registry cat /etc/docker/registry/config.yml
-          curl -s http://localhost:5000/v2/lms-backend-django/manifests/latest
-          curl -s http://localhost:5000/v2/lms-backend-django-dev/manifests/latest
+          curl -s http://localhost:5000/v2/lms-backend/manifests/latest
+          curl -s http://localhost:5000/v2/lms-backend-dev/manifests/latest
 
       # https://docs.docker.com/registry/garbage-collection/#run-garbage-collection
       - name: Cleanup local docker registry
@@ -182,19 +182,4 @@ jobs:
         run: docker run -e ENV_FILE=${{ env.ENV_FILE }} --network host ${{ env.LOCAL_IMAGE_DJANGO_DEV }} pytest --create-db --cov=./apps/
         env:
           WEBPACK_ASSETS_ROOT: ./site-frontend/assets/
-          ENV_FILE: /var/www/code/lms/settings/.env.example
-
-      - name: Run tests for CS Center project
-        run: docker run -e ENV_FILE=${{ env.ENV_FILE }} --network host ${{ env.LOCAL_IMAGE_DJANGO_DEV }} pytest -c compscicenter_ru/pytest.ini --cov=./compscicenter_ru/
-        env:
-          ENV_FILE: /var/www/code/lms/settings/.env.example
-
-      - name: Run tests for CS Club project
-        run: docker run -e ENV_FILE=${{ env.ENV_FILE }} --network host ${{ env.LOCAL_IMAGE_DJANGO_DEV }} pytest -c compsciclub_ru/pytest.ini --cov=./compsciclub_ru/
-        env:
-          ENV_FILE: /var/www/code/lms/settings/.env.example
-
-      - name: Run tests for Yandex School of Data Analysis project
-        run: docker run -e ENV_FILE=${{ env.ENV_FILE }} --network host ${{ env.LOCAL_IMAGE_DJANGO_DEV }} pytest -c lk_yandexdataschool_ru/pytest.ini --cov=./lk_yandexdataschool_ru/
-        env:
           ENV_FILE: /var/www/code/lms/settings/.env.example

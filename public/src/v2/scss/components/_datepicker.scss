@@ -1,0 +1,43 @@
+.SingleDatePicker {
+  .SingleDatePickerInput {
+    display: inline-flex;
+    flex-direction: row;
+    width: 100%;
+    background: $input-bg;
+    border-radius: $input-border-radius;
+    border: $input-border-width solid $input-border-color;
+    &:hover {
+      transition: $input-transition;
+      border: $input-border-width solid $input-border-color-hover;
+    }
+
+    .DateInput {
+      display: flex;
+      background: transparent;
+      width: auto;
+      @include media-breakpoint-up(md) {
+        width: 300px;
+      }
+    }
+    .DateInput_input {
+      font-family: $font-family-base;
+      font-weight: $font-weight-normal;
+      font-size: 1rem;
+      line-height: $input-line-height;
+      padding: spacer("3x") spacer("4x");
+      color: $input-color;
+      border-bottom: 0!important;
+      background: transparent;
+    }
+  }
+
+  .SingleDatePickerInput_calendarIcon {
+    display: flex;
+    align-items: center;
+  }
+}
+
+.CalendarDay {
+  padding: inherit;
+  vertical-align: inherit;
+}

@@ -1,0 +1,93 @@
+{% extends "v2/layouts/inner.jinja2" %}
+
+{% block sprites %}{% include "sprites/achievements.svg" %}{% endblock sprites %}
+
+{% block content %}
+  <div class="container my-10">
+    <div class="row">
+      <div class="col-md-4">
+        <img class="img-fluid sticky pt-sm-8 px-0 pr-lg-6" src="/static/v2/img/placeholder/girl.svg" alt="">
+      </div>
+      <div class="col-md-8 pl-md-10">
+        <p class="mb-2 pt-sm-8 px-0 mt-6 mt-sm-0">Выпускница CS центра</p>
+        <h1 class="mb-10">Дарья Широкова</h1>
+        <h2 class="h3">Законченные направления</h2>
+        <p class="mb-10"><a href="https://compscicenter.ru/syllabus/on-campus/ds/">Data Science</a>, <a href="https://compscicenter.ru/syllabus/on-campus/se/">Software Engineering</a></p>
+        <h2 class="h3">Отзыв об учебе в CS центре</h2>
+        <p class="mb-10">В центр я шла, чтобы систематизированно учиться. Оказалось, что помимо этого в центре можно найти друзей, познакомиться с
+          увлечёнными свои делом людьми и увидеть, что очень-очень многое возможно.
+        </p>
+        <h2 class="h3">История</h2>
+        <div class="timeline _person-history my-6">
+          <div class="timeline__element active">
+            <div class="timeline__content">
+              <div class="timeline__date">20 мая 2017</div>
+              <p>Подала заявление</p>
+            </div>
+          </div>
+          <div class="timeline__element">
+            <div class="timeline__content">
+              <div class="timeline__date">31 мая 2017</div>
+              <p>Написала экзамен на 9/10</p>
+            </div>
+          </div>
+          <div class="timeline__element">
+            <div class="timeline__content">
+              <div class="timeline__date _important">10 июня 2017</div>
+              <h3>Зачислена в CSC в Санкт-Петербурге</h3>
+            </div>
+          </div>
+          <div class="timeline__element">
+            <div class="timeline__content">
+              <div class="timeline__date">Осень 2017</div>
+              <ul class="ui">
+                <li><a href="#">Алгоритмы и структуры данных, часть 1</a>
+                  <span class="text-small">отлично</span>
+                </li>
+                <li><a href="#">Программирование на C++, часть 1</a>
+                  <span class="text-small">отлично</span>
+                </li>
+                <li><a href="#">Программирование на Java1</a>
+                  <span class="text-small">хорошо</span></li>
+              </ul>
+              <span class="timeline__label">Курсы ШАД</span>
+              <ul class="ui">
+                <li><a href="#">Алгоритмы и структуры данных, часть 1</a>
+                  <span class="text-small">отлично</span>
+                </li>
+                <li><a href="#">Программирование на Java1</a>
+                  <span class="text-small">зачет</span></li>
+              </ul>
+              <span class="timeline__label">Научно-исследовательские работы</span>
+              <ul class="ui">
+                <li><a href="#">Алгоритмы и структуры данных, часть 1</a>
+                  <span class="text-small">удовлетворительно</span>
+                </li>
+                <li><a href="#">Программирование на Java1</a>
+                  <span class="text-small">отлично</span></li>
+              </ul>
+            </div>
+          </div>
+          <div class="timeline__element active">
+            <div class="timeline__content">
+              <span class="timeline__date">Весна 2018</span>
+              <ul class="ui">
+                <li><a href="#">Алгоритмы и структуры данных, часть 2</a>
+                  <span class="text-small">отлично</span>
+                </li>
+                <li><a href="#">Программирование на Java1</a>
+                  <span class="text-small">удовлетворительно</span></li>
+              </ul>
+            </div>
+          </div>
+          <div class="timeline__element _photo">
+            <div class="timeline__content">
+              <span class="timeline__date _important">Весна 2018</span>
+              <h3>Закончила обучение в CS центре</h3>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock content %}

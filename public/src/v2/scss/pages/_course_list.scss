@@ -1,0 +1,53 @@
+.table._courses {
+  border: none;
+
+  .table__row {
+    .table__cell {
+      padding-left: spacer("4x");
+      &:first-child {
+        margin-bottom: spacer("1x");
+        @include media-breakpoint-up(md) {
+          width: 50%;
+          margin-bottom: 0;
+        }
+      }
+
+      &._teachers {
+        a {
+          color: $black;
+          font-size: $font-size-sm;
+        }
+      }
+
+      &._icons {
+        width: 140px;
+      }
+    }
+  }
+
+  @include media-breakpoint-up(md) {
+    .table__row {
+      .table__cell:first-child {
+        padding-left: spacer("8x");
+      }
+
+      .table__cell:last-child {
+        padding-right: spacer("8x");
+      }
+    }
+  }
+
+  .table__cell._icons {
+    display: none;
+    @include media-breakpoint-up(md) {
+      display: table-cell;
+    }
+  }
+}
+
+._courses-filter {
+  background: $grey-bg;
+  @include media-breakpoint-up(sm) {
+    background: $white;
+  }
+}

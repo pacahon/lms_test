@@ -1,0 +1,43 @@
+$gap: 8px;
+
+#appointment__card {
+  background: $gray-lighter;
+  overflow: visible;
+}
+
+.flex-gap {
+  display: inline-flex;
+  flex-wrap: wrap;
+  margin: -#{$gap} 0 0 -#{$gap};
+  width: calc(100% + #{$gap});
+
+  > * {
+      margin: #{$gap} 0 0 #{$gap};
+  }
+}
+
+.appointment-slots {
+  > * {
+    width: calc(50% - #{2 * $gap});
+    @include media-breakpoint-up(md) {
+      width: auto;
+    }
+  }
+
+  .btn.slot {
+    background: #fff;
+    border: 1px solid #DFE5E9;
+  }
+
+  .slot__disabled {
+    background: #f7f9fa!important;
+    color: #b1b9bf!important;
+  }
+
+  .slot__selected {
+    color: $black!important;
+    border-color: $black!important;
+    background: #d4dde1!important;
+  }
+}
+

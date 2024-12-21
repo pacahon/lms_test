@@ -1,0 +1,126 @@
+{% extends "v2/layouts/inner.jinja2" %}
+
+{% block content %}
+  <div class="container page-content">
+    <div class="row mb-8">
+      <div class="col-lg-10">
+        <h1>Обучение в CS центре</h1>
+        <div class="mb-6">
+          <p>Студенты CS&nbsp;центра учатся два или три года&nbsp;&mdash; по&nbsp;выбору студента, заканчивают одно или несколько
+            направлений обучения и&nbsp;проходят любое количество интересных курсов. В&nbsp;Санкт-Петербурге и&nbsp;Новосибирске можно
+            учиться очно, жители других городов поступают на&nbsp;дистанционное отделение.</p>
+          <p class="text-small text-muted">
+            Для выпуска нужно сдать двенадцать курсов и&nbsp;пройти три семестра практики или
+            научно-исследовательской работы. У&nbsp;каждой программы обучения есть базовые курсы, которые
+            нужно закончить для выпуска. Слушателям доступны некоторые заочные курсы ШАД и&nbsp;курсы
+            Computer Science клуба.
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-12">
+        <div class="card-deck _two">
+          <a class="card _horizontal _shadowed mb-6" href="/v2/pages/syllabus/on-campus/data-science/">
+            <div class="row no-gutters">
+              <div class="col-lg-5 pt-6 px-6 pb-0 p-lg-4">
+                <img src="{{ static('v2/img/pages/syllabus/on-campus/data-science.svg') }}" alt="">
+              </div>
+              <div class="col-lg-7">
+                <div class="card__content p-6">
+                  <p class="h3 mb-2">Data Science</p>
+                  <p class="text-small m-0">
+                    Направление можно рассматривать как отделение Школы анализа данных. Здесь готовят специалистов в&nbsp;области обработки и
+анализа данных и&nbsp;извлечения информации из&nbsp;интернета.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </a>
+          <a class="card _horizontal _shadowed mb-6" href="/v2/pages/syllabus/on-campus/software-engineering/">
+            <div class="row no-gutters">
+              <div class="col-lg-5 pt-6 px-6 pb-0 p-lg-4">
+                <img src="{{ static('v2/img/pages/syllabus/on-campus/software-engineering.svg') }}" alt="">
+              </div>
+              <div class="col-lg-7">
+                <div class="card__content p-6">
+                  <p class="h3 mb-2">Software Engineering</p>
+                  <p class="text-small m-0">
+                    Знания и&nbsp;практический опыт, полученные на&nbsp;направлении, помогут выпускникам стать квалифицированными специалистами в
+разработке&nbsp;ПО и&nbsp;в&nbsp;научно-исследовательской сфере.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </a>
+          <a class="card _horizontal _shadowed mb-6" href="/v2/pages/syllabus/on-campus/computer-science/">
+            <div class="row no-gutters">
+              <div class="col-lg-5 pt-6 px-6 pb-0 p-lg-4">
+                <img src="{{ static('v2/img/pages/syllabus/on-campus/computer-science.svg') }}" alt="">
+              </div>
+              <div class="col-lg-7">
+                <div class="card__content p-6">
+                  <p class="h3 mb-2">Computer Science</p>
+                  <p class="text-small m-0">
+                    Цель обучения на&nbsp;направлении&nbsp;&mdash; подготовка специалистов по&nbsp;современной информатике. Студенты
+направления изучают теоретические основы информатики и&nbsp;более прикладные научные области.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </a>
+          <a class="card _horizontal _shadowed mb-6" href="/v2/pages/syllabus/on-campus/robotics/">
+            <div class="row no-gutters">
+              <div class="col-lg-5 pt-6 px-6 pb-0 p-lg-4">
+                <img src="{{ static('v2/img/pages/syllabus/on-campus/robotics.svg') }}" alt="">
+              </div>
+              <div class="col-lg-7">
+                <div class="card__content p-6">
+                  <p class="h3 mb-2">Robotics</p>
+                  <p class="text-small m-0">
+                    За&nbsp;время обучения студенты разберут взаимодействие с&nbsp;технологиями робототехники и&nbsp;научатся создавать свой уникальный
+продукт.
+                    </p>
+                </div>
+              </div>
+            </div>
+          </a>
+        </div>
+      </div>
+      <div class="col-lg-12">
+        <div class="card-deck _three">
+          <a href="https://compscicenter.ru/courses/" class="card mb-4">
+            <div class="card__content text-small">
+              <div class="card__title">
+                Все курсы
+              </div>
+              <p>Курсы подготовлены сотрудниками Яндекса, JetBrains и&nbsp;других IT-компаний, преподавателями
+                ведущих вузов Петербурга и&nbsp;Новосибирска.</p>
+            </div>
+          </a>
+          <a href="/v2/pages/projects/" class="card mb-4">
+            <div class="card__content text-small">
+              <div class="card__title">
+                Практики и научно-исследовательская работа
+              </div>
+              <p>Во&nbsp;время обучения студенты работают над практическими или исследовательскими задачами
+                под руководством опытных программистов или учёных.</p>
+            </div>
+          </a>
+          <a href="https://pmcsc.ru/" target="_blank" rel="nofollow noopener" class="card mb-4">
+            <div class="card__content text-small">
+              <div class="card__title">
+                Школа по&nbsp;управлению продуктами
+              </div>
+              <p>Годовое обучение с&nbsp;наставниками и&nbsp;преподавателями из&nbsp;JetBrains, Яндекс, Wrike и&nbsp;Arrival. В&nbsp;программе&nbsp;&mdash;
+                теоретические и&nbsp;практические занятия, проработка идеи продукта, задания от&nbsp;IT-компаний и&nbsp;практика в&nbsp;реальных
+                проектах.</p>
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  </div>
+{% endblock content %}

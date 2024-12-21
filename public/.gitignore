@@ -1,0 +1,18 @@
+# OS X specific files
+.DS_Store
+._*
+# SASS specific files
+**/.sass-cache/
+*.css.map
+# Python
+*.pyc
+site-frontend/
+# Ignore IDEA files
+.idea/
+
+.env
+node_modules/
+core/db.sqlite3
+static/
+assets/**/local/
+.python-version

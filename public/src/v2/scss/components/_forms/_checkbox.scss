@@ -1,0 +1,17 @@
+.ui.option {
+  &.checkbox {
+    .control__input {
+      &:checked ~ .control__indicator {
+        background: $action-selected-bg url("/static/v2/img/icons/checkmark.svg") no-repeat center;
+      }
+    }
+
+    &.disabled {
+      .control__input {
+        &:checked ~ .control__indicator {
+          background: $action-disabled-bg url("/static/v2/img/icons/checkmark.svg") no-repeat center;
+        }
+      }
+    }
+  }
+}

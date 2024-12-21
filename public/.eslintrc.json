@@ -1,0 +1,46 @@
+{
+  "root": true,
+  "parser": "@babel/eslint-parser",
+  "parserOptions": {
+    "requireConfigFile": false,
+    "babelOptions": {
+      "envName": "eslint"
+    }
+  },
+  "extends": [
+    "@cscenter/eslint-config",
+    "@cscenter/eslint-config/jest"
+  ],
+  "env": {
+    "browser": true,
+    "es6": true,
+    "node": true,
+    "jquery": true
+  },
+  "globals": {
+    "$": true
+  },
+  "settings": {
+    "import/resolver": {
+      "node": {
+        "paths": [
+          "src/v2/js",
+          "src/v1/js"
+        ],
+        "extensions": [".js", ".jsx"]
+      },
+      // uses 'eslint-import-resolver-webpack'
+      "webpack": {
+        "paths": ["src/v2/js"]
+      }
+    },
+    "react": {
+      // Regex for Component Factory to use,
+      // default to "createReactClass"
+      "createClass": "createReactClass",
+      // Pragma to use, default to "React"
+      "pragma": "React",
+      "version": "detect"
+    }
+  }
+}

@@ -9,17 +9,6 @@ from courses.tasks import recalculate_invited_priority
 from learning.models import EnrollmentPeriod
 from django.utils import timezone
 
-
-@receiver(post_save, sender=Semester)
-def create_enrollment_period_for_compsciclub_ru(sender, instance: Semester,
-                                                created, *args, **kwargs):
-    """Side effect for compsciclub.ru creates predefined enrollment period"""
-    if not created:
-        return
-    ends_on = instance.ends_at.date()
-    EnrollmentPeriod.objects.get_or_create(site_id=settings.CLUB_SITE_ID,
-                                           semester=instance,
-                                           defaults={"ends_on": ends_on})
         
 @receiver(post_save, sender=Semester)
 def schedule_invited_stundent_priority_recalculation(sender, instance: Semester,

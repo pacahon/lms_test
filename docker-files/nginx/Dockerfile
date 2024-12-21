@@ -1,8 +1,8 @@
-ARG DJANGO_IMAGE=lms-backend-django:latest
+ARG DJANGO_IMAGE=lms-backend:latest
 FROM ${DJANGO_IMAGE} as django
 
 FROM nginx:1.21-alpine
-LABEL maintainer="webmaster@compscicenter.ru"
+LABEL maintainer="webmaster@site_ru.ru"
 
 ARG DJANGO_STATIC_ROOT=/var/www/static/
 COPY --from=django ${DJANGO_STATIC_ROOT} ${DJANGO_STATIC_ROOT}

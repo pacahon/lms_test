@@ -1,0 +1,12 @@
+{% macro author_card(img_url, title, subtitle, testimonial='', modifiers='') %}
+    <div class="author{% if modifiers %} {{ modifiers }}{% endif %}">
+        {% if img_url %}
+            <img class="author__img" alt="{{ title }}" src="{{ img_url }}" />
+        {% endif %}
+        <div class="author__details">
+            <h4>{{ title }}</h4>
+            <span>{{ subtitle }}</span>
+        </div>
+        {% if testimonial %}<div class="author__testimonial">{{ testimonial }}</div>{% endif %}
+    </div>
+{%- endmacro %}

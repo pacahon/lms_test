@@ -26,7 +26,7 @@ class ViewCourse(Permission):
     @staticmethod
     @predicate
     def rule(user, course: Course):
-        if user.roles.issubset(student_permission_roles) and course.is_draft:
+        if user.roles.issubset(student_permission_roles) and (not course or course.is_draft):
             return False
         return True
 

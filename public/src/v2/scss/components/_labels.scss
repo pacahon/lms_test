@@ -1,0 +1,126 @@
+@mixin label-color($color) {
+  background-color: rgba($color, .1);
+  color: $color;
+  border-color: transparent;
+  &::before {
+    color: $color;
+  }
+}
+
+@mixin label-color-hover($color) {
+  &:hover {
+    color: $color;
+    background-color: rgba($color, .2);
+  }
+}
+
+.ui.label {
+  background: transparent;
+  color: $gray-dark;
+  border: $input-border-width solid $gray-light;
+  border-radius: $border-radius;
+  font-size: $font-size-base;
+  padding: spacer("1x") spacer("2x");
+  display: inline-block;
+
+  &._gray {
+    @include label-color($gray-dark);
+  }
+
+  &._green {
+    @include label-color($green);
+  }
+
+  &._blue {
+    @include label-color($blue);
+  }
+
+  &._icon {
+    display: inline-table;
+    border: none;
+    padding: 0;
+    color: $black;
+
+    .sprite-img {
+      fill: $gray-light;
+      margin-right: spacer("1x");
+      width: 1.2em;
+      height: 1.2em;
+    }
+
+    span {
+      display: table-cell;
+      vertical-align: middle;
+    }
+  }
+
+  &._no-wrap {
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    max-width: 100%;
+
+    &._icon {
+      display: inline-block;
+    }
+
+    span {
+      display: inline;
+      vertical-align: middle;
+    }
+  }
+}
+
+a.ui.label._icon {
+  color: $link-color;
+  &:hover {
+    color: $link-hover-color;
+
+    .sprite-img {
+      fill: $gray-dark;
+    }
+  }
+
+}
+
+.ui.labels a.label,
+a.ui.label {
+  transition: $transition-base;
+
+  &._gray {
+    @include label-color-hover($gray-dark);
+  }
+
+  &._green {
+    @include label-color-hover($green);
+  }
+
+  &._blue {
+    @include label-color-hover($blue);
+  }
+}
+
+.ui.label._big {
+  font-size: $font-size-content-base;
+}
+
+.ui.labels {
+  display: flex;
+  flex-flow: row;
+  flex-wrap: wrap;
+
+  > .label {
+    margin: 0 spacer("2x") spacer("2x") 0;
+
+    &._big {
+      margin: 0 spacer("6x") spacer("3x") 0;
+    }
+  }
+}
+
+.ui.labels._circular .label,
+.ui.label._circular {
+  font-size: $font-size-sm;
+  line-height: $line-height-sm;
+  border-radius: 2rem;
+}

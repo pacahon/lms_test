@@ -1,0 +1,38 @@
+{% extends "v2/layouts/inner.jinja2" %}
+
+{% block body_attrs %}class="grey-bg" data-init-sections="collapsible"{% endblock body_attrs %}
+
+{% macro collapsible_block(title, id, open=false) %}
+  <div class="collapsible">
+    <div class="card _qa mb-4">
+      <button class="btn card__header" id="collapsible-block-{{ id }}"
+              aria-expanded="{% if open %}true{% else %}false{% endif %}" href="#collapsible-block-{{ id }}__inner">
+        {{ macros.svg_icon('border-arrow-right') }}{{ title|safe }}
+      </button>
+      <div class="{% if not open %}collapse{% endif %} pb-4" id="collapsible-block-{{ id }}__inner" aria-expanded="{% if open %}true{% else %}false{% endif %}">
+        <div class="card__content">
+          {{ caller() }}
+        </div>
+      </div>
+    </div>
+  </div>
+{%- endmacro %}
+
+{% block content %}
+    <div class="container page-content">
+        <div class="row">
+            <div class="col-lg-12">
+                <h1>Collapsible Block</h1>
+                {% call collapsible_block('Название блока', 'unique-id') %}
+                  <h3>Hello World</h3>
+                  <p>Hidden description</p>
+                {% endcall %}
+
+                {% call collapsible_block('Opened Block', 'unique-id', open=true) %}
+                  <h3>Hello World</h3>
+                  <p>Visible description</p>
+                {% endcall %}
+            </div>
+        </div>
+    </div>
+{% endblock content %}

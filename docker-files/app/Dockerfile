@@ -1,5 +1,5 @@
 ARG FRONTEND_IMAGE=lms-frontend-webpack:latest
-ARG BASE_IMAGE=lms-backend-django:latest
+ARG BASE_IMAGE=lms-backend:latest
 
 FROM ${FRONTEND_IMAGE} as frontend-builder
 

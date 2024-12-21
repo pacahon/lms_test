@@ -1,27 +1,35 @@
-version: '3.4'
+name: lms
 
 services:
-  django-common:
+  webpack-bundles:
+    build:
+      context: .
+      dockerfile: docker-files/static/Dockerfile
+      args:
+        - WEBPACK_ENVIRONMENT=prod
+        - SENTRY_AUTH_TOKEN=${SENTRY_AUTH_TOKEN}
+    image: lms-webpack-bundles
+    command: /bin/true
+  backend-base:
     build:
       context: .
       dockerfile: docker-files/app/common.Dockerfile
-    image: lms-backend-django-prod-deps
+    image: lms-backend-base
     command: /bin/true
-  uwsgi:
-    container_name: lms-django
+  backend:
     build:
       context: .
       dockerfile: docker-files/app/Dockerfile
       args:
-        - BASE_IMAGE=lms-backend-django-prod-deps
+        - BASE_IMAGE=lms-backend-base
         - FRONTEND_IMAGE=lms-webpack-bundles
         - DJANGO_STATIC_ROOT=/var/www/static/
         - SENTRY_AUTH_TOKEN=${SENTRY_AUTH_TOKEN}
-    image: lms-backend-django
+    image: lms-backend
     restart: always
     environment:
       - DATABASE_URL=postgresql://csc:FooBar@db:5432/cscdb
-      - PROJECT_MODULE_NAME=compscicenter_ru
+      - PROJECT_MODULE_NAME=site_ru
       - REDIS_HOST=lms-redis-cluster
       - REDIS_PASSWORD=secret-password
     volumes:
@@ -29,26 +37,24 @@ services:
     depends_on:
       - db
       - redis
-      - django-common
-  django-tests:
-    container_name: lms-django-tests
+      - backend-base
+  backend-dev:
     build:
       context: .
       dockerfile: docker-files/app/dev.Dockerfile
       args:
-        - BASE_IMAGE=lms-backend-django-prod-deps
-    image: lms-backend-django-tests
+        - BASE_IMAGE=lms-backend-base
+    image: lms-backend-dev
     environment:
-     - PROJECT_MODULE_NAME=compscicenter_ru
+     - PROJECT_MODULE_NAME=site_ru
      - REDIS_HOST=lms-redis-cluster
      - REDIS_PASSWORD=secret-password
     depends_on:
       - db
       - redis
-      - uwsgi
-  rqworker:
-    container_name: lms-task-queue
-    image: lms-backend-django
+      - backend
+  task-worker:
+    image: lms-backend
     restart: always
     environment:
       - DEBUG=0
@@ -56,23 +62,21 @@ services:
       - REDIS_PASSWORD=secret-password
     command: python manage.py rqworker high default
     depends_on:
-      - uwsgi
+      - backend
   nginx:
-    container_name: lms-nginx
     build:
       context: ./docker-files/nginx
       dockerfile: Dockerfile
     image: lms-backend-nginx
     ports:
-      - "80:80"
+      - "0.0.0.0:80:80"
     volumes:
       - static-data:/var/www/static
       - media-data:/var/www/media
     depends_on:
       - redis
-      - uwsgi
+      - backend
   db:
-    container_name: db
     image: postgres:12-alpine
     restart: always
     environment:
@@ -82,7 +86,6 @@ services:
     volumes:
       - postgres-data:/var/lib/postgresql/data/
   redis:
-    container_name: lms-redis-cluster
     image: "redis:6-alpine"
     command: sh -c 'if [ "x$${REDIS_PASSWORD}" = "x" ]; then redis-server --appendonly yes; else redis-server --appendonly yes --requirepass $$REDIS_PASSWORD; fi'
     expose:
@@ -98,12 +101,4 @@ volumes:
     name: lms-media
     external: true
   redis-data:
-    name: lms-redis-data
-    external: true
   postgres-data:
-  lms-repository:
-    driver: local
-    driver_opts:
-      o: bind
-      type: none
-      device: .

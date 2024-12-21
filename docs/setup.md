@@ -39,14 +39,7 @@ GRANT ALL privileges ON DATABASE cscdb TO csc;
 * Run migrations
 ```bash
 # Or simply generate an empty database
-$ python manage.py migrate --settings=compscicenter_ru.settings.local
+$ python manage.py migrate --settings=site_ru.settings.local
 ```
 
-* Create `.env` file and place it under `compscicenter_ru/settings/` directory. The easiest way is to copy and rename `.env.example` which could be find in the target directory.
-
-
-
-
-## Production setup
-
-See [infrastructure](https://github.com/cscenter/site/tree/master/infrastructure) subdirectory.
+* Create `.env` file and place it under `site_ru/settings/` directory. The easiest way is to copy and rename `.env.example` which could be find in the target directory.

@@ -95,7 +95,7 @@ else:
     PRIVATE_MEDIA_URL = "/media/private/"
 
 # Static Files Settings
-DJANGO_ASSETS_ROOT = ROOT_DIR / "assets"
+DJANGO_ASSETS_ROOT = ROOT_DIR / "public"/ "assets"
 WEBPACK_ASSETS_ROOT = Path(
     env.str("WEBPACK_ASSETS_ROOT"), default=DJANGO_ASSETS_ROOT
 ).resolve()

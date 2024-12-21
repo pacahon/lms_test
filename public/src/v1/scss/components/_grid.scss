@@ -1,0 +1,18 @@
+// Container modifications
+body:not(._wide) .container {
+  width: $min-width;
+}
+
+.container-wide {
+    width: 90% !important;
+    min-width: $min-width;
+}
+
+.container-responsive {
+  min-width: $min-width;
+}
+@media (min-width: $container-large-desktop) {
+  .container-responsive {
+    width: $container-large-desktop;
+  }
+}

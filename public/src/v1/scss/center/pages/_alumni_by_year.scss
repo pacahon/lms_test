@@ -1,0 +1,199 @@
+#graduates-by-year {
+  @extend .container;
+  padding: 0 15px 0 15px;
+
+  h3 {
+    display: inline-block;
+    padding: 10px 15px;
+    font-size: 24px;
+    background: #f9f9f9;
+    font-weight: normal;
+    border: 1px solid #f2f2f2;
+    margin: 0 20px 20px 0;
+    @include clearfix;
+  }
+
+  .dashed-link {
+    font-size: 24px;
+  }
+
+  .graduates-list {
+    margin: 0 0 80px 0;
+    overflow: hidden;
+
+    .empty {
+      padding: 20px 0;
+    }
+
+
+    .alumni {
+      width: 150px;
+      float: left;
+      overflow: hidden;
+      vertical-align: top;
+      margin: 0 5px 5px 0;
+
+      img {
+        max-width: 170px;
+      }
+
+      a {
+        font-weight: 300;
+        font-size: 16px;
+        display: inline-block;
+        line-height: 22px;
+        max-width: 170px;
+      }
+    }
+  }
+
+  .dashed-link {
+    margin-right: 30px;
+  }
+
+  .testimonials {
+    @extend .row;
+    padding: 0;
+  }
+
+
+  .c-student-faces {
+    padding: 0;
+    overflow: hidden;
+    
+    img {
+      background: none;
+    }
+  }
+}
+
+.stats {
+  margin-bottom: 65px;
+
+  .row {
+    margin-bottom: 15px;
+  }
+
+  .__hours, .__practices, .__courses {
+    .widget-content {
+      padding: 30px 15px;
+    }
+    .counter-label {
+      font-size: 26px;
+    }
+
+  }
+
+}
+
+
+.testimonials-wrapper {
+    .center-header {
+      a {
+      }
+    }
+
+  .testimonials {
+    @extend .container;
+    margin: 0px auto;
+
+    .testimonial {
+      margin-bottom: 20px;
+      blockquote {
+        background: #f8f8f8 none repeat scroll 0 0;
+        border: medium none;
+        color: #333;
+        display: block;
+        font-size: 16px;
+        line-height: 1.55;
+        padding: 20px 20px 20px 55px;
+        position: relative;
+
+        &:before {
+          color: #bbb;
+          font-size: 50px;
+          content: "\201C";
+          position: absolute;
+          margin: 0 0 0 -40px;
+        }
+
+        &:after {
+          width: 0;
+          height: 0;
+          left: 80px;
+          content: " ";
+          bottom: -30px;
+          position: absolute;
+          border-style: solid;
+          border-width: 30px 30px 0 0;
+          border-color: #f8f8f8 transparent transparent transparent;
+        }
+      }
+
+      div {
+        overflow: hidden;
+
+        img {
+          @extend .pull-left;
+          border: 1px solid #f5f5f5;
+          border-radius: 150px !important;
+          height: 75px;
+          padding: 3px;
+          width: 75px;
+          margin-right: 15px;
+        }
+
+        span {
+          display: block;
+          color: #e6400c;
+          font-size: 16px;
+          font-weight: 300;
+          margin: 18px 0 6px;
+        }
+
+        a {
+          color: #e6400c;
+          text-decoration: underline;
+        }
+      }
+
+      &.right {
+        blockquote {
+          &:after {
+            left: auto;
+            right: 80px;
+            border-width: 30px 0 0 30px;
+          }
+        }
+        div {
+          text-align: right;
+          img {
+            @extend .pull-right;
+            margin-left: 15px;
+            margin-right: 0;
+          }
+        }
+      }
+    }
+
+    &.__list {
+      .testimonial {
+        width: 100%;
+        margin-bottom: 40px;
+
+        &.right {
+          float: right;
+        }
+
+        blockquote {
+          clear: both;
+          padding: 30px;
+          &:before {
+            display: none;
+          }
+        }
+      }
+    }
+  }
+}
+

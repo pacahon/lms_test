@@ -1,0 +1,50 @@
+{% macro svg_image(id, modifiers='') -%}
+<svg class="sprite-img _{{ id }}{% if modifiers %} {{ modifiers }}{% endif %}" xmlns:xlink="http://www.w3.org/1999/xlink"><use xlink:href="#{{ id }}"></use></svg>
+{%- endmacro %}
+
+{% macro svg_icon(id, modifiers='') -%}
+<svg class="sprite-img svg-icon _icon-{{ id }}{% if modifiers %} {{ modifiers }}{% endif %}" xmlns:xlink="http://www.w3.org/1999/xlink"><use xlink:href="#icon-{{ id }}"></use></svg>
+{%- endmacro %}
+
+{% macro video_iframe(url="https://www.youtube.com/embed/A3SomwRa5iw", attrs={}) -%}
+<div class="video">
+    <iframe class="embed _responsive" src="{{ url }}" frameborder="0" allowfullscreen {% for k,v in attrs.items() %}{{ k }}={{ v }} {% endfor %}></iframe>
+</div>
+{%- endmacro %}
+
+{% macro tabs(tab_list, modifiers='') -%}
+    <ul class="ui nav nav-tabs{% if modifiers %} {{ modifiers }}{% endif %}" role="tablist">
+    {% for tab in tab_list -%}
+        <li class="nav-item">
+            <a class="nav-link{% if tab.active %} active{% endif %}"
+               data-toggle="tab" role="tab"
+               id="tab__{{ tab.target }}"
+               data-target="#{{ tab.target }}"
+               href="{{ tab.url }}"
+               aria-controls="{{ tab.target }}"
+               aria-selected="{% if tab.active %}true{% else %}false{% endif %}">{{ tab.name }}</a>
+        </li>
+    {%- endfor %}
+    </ul>
+{%- endmacro %}
+
+{% macro scrollable(modifiers='mb-2') -%}
+    <div class="scrollable{% if modifiers %} {{ modifiers }}{% endif %}">{{ caller() }}</div>
+{%- endmacro %}
+
+{% macro collapsible_block(title, id, open=false) %}
+  <div class="collapsible">
+    <div class="card _qa mb-4">
+      <button class="btn card__header" id="collapsible-block-{{ id }}"
+              aria-expanded="{% if open %}true{% else %}false{% endif %}" href="#collapsible-block-{{ id }}__inner">
+        {{ svg_icon('border-arrow-right') }}{{ title|safe }}
+      </button>
+      <div class="{% if not open %}collapse{% endif %} pb-4" id="collapsible-block-{{ id }}__inner"
+           aria-expanded="{% if open %}true{% else %}false{% endif %}">
+        <div class="card__content">
+          {{ caller() }}
+        </div>
+      </div>
+    </div>
+  </div>
+{%- endmacro %}

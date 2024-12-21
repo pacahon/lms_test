@@ -5,7 +5,7 @@ on: workflow_dispatch
 env:
   PYTHON_IMAGE: python:3.9-slim-buster
   LOCAL_IMAGE_FRONTEND: localhost:5000/lms-frontend-webpack:latest
-  LOCAL_IMAGE_DJANGO: localhost:5000/lms-backend-django:latest
+  LOCAL_IMAGE_DJANGO: localhost:5000/lms-backend:latest
   YC_REMOTE_IMAGE_BACKEND_DJANGO: cr.yandex/crp117orrt9bf62s55e2/backend-django:${{ github.run_number }}
   YC_REMOTE_IMAGE_BACKEND_NGINX: cr.yandex/crp117orrt9bf62s55e2/backend-nginx:${{ github.run_number }}
 
@@ -89,9 +89,8 @@ jobs:
       - name: Build frontend image
         uses: docker/build-push-action@v2
         with:
-
-          context: ./lms-frontend
-          file: ./lms-frontend/Dockerfile
+          context: ./lms-backend/
+          file: ./lms-backend/docker-files/static/Dockerfile
           push: true
           load: false
           builder: ${{ steps.buildx.outputs.name }}

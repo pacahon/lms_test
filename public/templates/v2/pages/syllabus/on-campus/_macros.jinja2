@@ -1,0 +1,17 @@
+{% from "v2/macros/_global.jinja2" import collapsible_block %}
+
+{% macro collapsible_meta_course(title, course_slug, description, base_url='https://compscicenter.ru') %}
+  {% call collapsible_block(title, course_slug) %}
+    {{ description|safe }}
+    <a href="{{ base_url }}/courses/{{ course_slug }}/" class="btn _outline _gray _small" target="_blank">Страница курса</a>
+  {% endcall %}
+{%- endmacro %}
+
+
+{% macro collapsible_meta_course_alt(title, course_slug, base_url='') %}
+  {% set description = caller() %}
+  {% call collapsible_block(title, course_slug) %}
+    {{ description }}
+    <a href="{{ base_url }}/courses/{{ course_slug }}/" class="btn _outline _gray _small" target="_blank">Страница курса</a>
+  {% endcall %}
+{%- endmacro %}

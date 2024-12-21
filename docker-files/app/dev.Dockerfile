@@ -1,4 +1,4 @@
-ARG BASE_IMAGE=lms-backend-django:latest
+ARG BASE_IMAGE=lms-backend:latest
 FROM ${BASE_IMAGE}
 
 # Install build deps, then run `pip install`,

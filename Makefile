@@ -1,7 +1,7 @@
 SHELL := /bin/sh
 
-PROJECTS := compscicenter_ru compsciclub_ru
-PROJECT := compscicenter_ru
+PROJECTS := site_ru
+PROJECT := site_ru
 PORT := 8000
 SETTINGS_ENV := local
 DJANGO_SETTINGS_MODULE = $(PROJECT).settings.$(SETTINGS_ENV)
@@ -11,23 +11,10 @@ ifeq ($(filter $(PROJECT),$(PROJECTS)),)
     $(error A project with name '$(PROJECT)' does not exist. Available projects: $(PROJECTS))
 endif
 
-.PHONY: run club migrate msg msg-compile static dumpdata loaddata clean cmd refresh sync deploy check_defined tests
+.PHONY: run club migrate msg msg-compile static dumpdata loaddata clean cmd refresh sync deploy check_defined
 
 run:
 	python -W once manage.py runserver --settings=$(PROJECT).settings.local $(PORT)
-
-club:
-	python manage.py runserver --settings=compsciclub_ru.settings.local 8002
-
-shad:
-	python manage.py runserver --settings=lk_yandexdataschool_ru.settings.local 8003
-
-tests:
-	pytest --create-db --ds=compscicenter_ru.settings.test
-	pytest -c compscicenter_ru/pytest.ini --ds=compscicenter_ru.settings.test
-	pytest -c compsciclub_ru/pytest.ini --ds=compsciclub_ru.settings.test
-	pytest -c lk_yandexdataschool_ru/pytest.ini --ds=lk_yandexdataschool_ru.settings.test
-	python manage.py clear_scheduled_jobs
 
 migrate:
 	python manage.py migrate $(DJANGO_POSTFIX)
@@ -38,8 +25,7 @@ msg:
 # https://code.djangoproject.com/ticket/24159
 # Should set apps in LOCALE_PATHS explicitly until patch been released
 msg-compile:
-	python manage.py compilemessages --settings=compscicenter_ru.settings.local
-	python manage.py compilemessages --settings=compsciclub_ru.settings.local
+	python manage.py compilemessages --settings=site_ru.settings.local
 
 static:
 	python manage.py collectstatic --noinput $(DJANGO_POSTFIX)

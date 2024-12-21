@@ -1,0 +1,22 @@
+.card {
+  // FIXME: Make as utility?
+  &._shadowed {
+    @include font-smoothing();
+    box-shadow: 0 0 10px $gray-light;
+
+    &:hover {
+      transition: $transition-base;
+      box-shadow: 0 0 32px $gray-light;
+    }
+  }
+}
+
+.online-courses {
+  .card {
+    .author,
+    .author a {
+      color: $gray-dark;
+      font-size: $font-size-sm;
+    }
+  }
+}

@@ -7,8 +7,6 @@ __pycache__
 db.sqlite3
 static/
 media/
-public/*
-!public/assets/
 docs/
 setup.cfg
 docker-compose.override.yml

@@ -1,0 +1,64 @@
+{% extends "v2/layouts/inner.jinja2" %}
+
+{% block body_attrs %}class="grey-bg"{% endblock body_attrs %}
+
+{% block sprites %}
+    <script type="text/javascript">
+        window.__CSC__.sprites.push("{{ static("v2/dist/img/sprites/ui.svg") }}");
+    </script>
+{% endblock sprites %}
+
+{% block content %}
+<div class="container page-content online-courses">
+    <div class="row">
+      <div class="col-md-8 offset-md-2">
+        <form class="ui form __no-border" action="">
+          <div class="field">
+            <div class="ui icon input">
+              <input type="search" placeholder="Поиск">
+              <i class="_search icon">{{ macros.svg_icon('search') }}</i>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+    <div class="card-deck _four _sm-one">
+                    <div class="card _horizontal-mobile _shadowed">
+                        <a class="card__img" href="#" target="_blank" rel="noopener">
+                            <img src="/media/online_courses/combinatorics.png" alt="">
+                        </a>
+                        <div class="card__content">
+                            <a class="h4 mb-1" href="#" target="_blank" rel="noopener">Функциональное программирование на языке Haskell (часть 2)</a>
+                            <a class="author" href="#">А.А. Владыкин</a>
+                        </div>
+                    </div>
+                    <div class="card _horizontal-mobile _shadowed">
+                        <a class="card__img" href="#" target="_blank" rel="noopener">
+                            <img src="/media/online_courses/c_bd.png" alt="">
+                        </a>
+                        <div class="card__content">
+                            <a class="h4 mb-1" href="#" target="_blank" rel="noopener">Базы данных. Осень 2017</a>
+                            <div class="author">А.А. Владыкин</div>
+                        </div>
+                    </div>
+                    <div class="card _horizontal-mobile _shadowed">
+                        <a class="card__img" href="#" target="_blank" rel="noopener">
+                            <img src="/media/online_courses/python-yandex-2_1.png" alt="">
+                        </a>
+                        <div class="card__content">
+                            <a class="h4 mb-1" href="#" target="_blank" rel="noopener">Основы программирования на python</a>
+                            <div class="author">С.А.Лебедев</div>
+                        </div>
+                    </div>
+                    <div class="card _horizontal-mobile _shadowed">
+                        <a class="card__img" href="#" target="_blank" rel="noopener">
+                            <img src="/media/online_courses/combinatorics.png" alt="">
+                        </a>
+                        <div class="card__content">
+                            <a class="h4 mb-1" href="#" target="_blank" rel="noopener">Java. Базовый курс</a>
+                            <div class="author">А.А. Владыкин</div>
+                        </div>
+                    </div>
+    </div>
+</div>
+{% endblock content %}
