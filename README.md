@@ -2,6 +2,7 @@ Production stack: nginx, uwsgi, python3.x, Django 2.2.x, postgresql 11, redis (f
 
 
 ```bash
+docker compose build
 cp docker-compose.override.yml.example docker-compose.override.yml
 cp ./lms/settings/.env.example ./lms/settings/.env
 docker exec -e RECAPTCHA_PRIVATE_KEY= -e RECAPTCHA_PUBLIC_KEY= -it lms-backend-1 ./manage.py migrate --settings=site_ru.settings.production
@@ -10,6 +11,7 @@ docker exec -e RECAPTCHA_PRIVATE_KEY= -e RECAPTCHA_PUBLIC_KEY= -it lms-backend-1
 docker exec -e RECAPTCHA_PRIVATE_KEY= -e RECAPTCHA_PUBLIC_KEY= -it lms-backend-1 ./manage.py shell --settings=site_ru.settings.production
 ```
 
+Через shell создать объекты (админа, текущий семестр, основную ветку итд)
 
 ```python
 from users.models import StudentProfile, User, StudentTypes
@@ -30,4 +32,9 @@ StudentProfile.objects.create(site_id=settings.SITE_ID, user=admin, type=Student
 meta_course = MetaCourse.objects.create(slug="first-course-slug", name_ru="Первый Курс", name_en="First Course")
 # Первое прочтение курса
 course = Course.objects.create(meta_course=meta_course, semester=current_term, main_branch=main_branch, enrollment_type=InvitationEnrollmentTypes.LECTIONS_ONLY, completed_at=datetime.datetime.now(datetime.timezone.utc), is_draft=False)
+```
+
+```bash
+docker compose up nginx
+# Если всё хорошо, то доступ будет по адресу http://localhost/narnia/
 ```
